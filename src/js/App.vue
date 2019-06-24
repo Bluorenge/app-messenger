@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- боковая часть приложения -->
-    <div class="sidebar">
+    <div class="sidebar" :class="{ isOpen: isOpen }">
       <section class="sidebar__user-menu user-menu">
         <div class="user-menu__img-wrap">
           <img src="img/profile-pic.jpg" alt="profile-pic">
@@ -10,13 +10,19 @@
           <span class="user-menu__name">{{ userName }}</span>
           <span class="user-menu__status">{{ status }}</span>
         </div>
-        <!-- вывод компонента добавления ветки сообщения -->
-        <addChannel v-on:add-channel="addNewItem"></addChannel>
+        <div class="toggle__wrap toggle__wrap--cross" @click="toggle">
+          <span class="toggle__item"></span>
+          <span class="toggle__item"></span>
+        </div>
       </section>
       <section class="sidebar__channel-wrap channel">
         <div class="channel__top-wrap">
-          <h2 class="channel__title">{{ titleList }}</h2>
-          <span class="channel__type">{{ historyOfChannel }}</span>
+          <div class="channel__info-wrap">
+            <h2 class="channel__title">{{ titleList }}</h2>
+            <span class="channel__type">{{ historyOfChannel }}</span>
+          </div>
+          <!-- вывод компонента добавления ветки сообщения -->
+          <addChannel v-on:add-channel="addNewItem"></addChannel>
         </div>
         <!-- вывод подзоголовков списка сообщений -->
         <menuItem :messageList="messageList"></menuItem>
@@ -26,6 +32,11 @@
     <!-- центральная часть приложения -->
     <div class="central-block">
       <section class="central-block__top">
+        <div class="toggle__wrap" @click="toggle">
+          <span class="toggle__item"></span>
+          <span class="toggle__item"></span>
+          <span class="toggle__item"></span>
+        </div>
         <h1 class="central-block__title">{{ mainTitle }}</h1>
         <select class="central-block__message-filter">
           <option
@@ -72,6 +83,7 @@ export default {
       status: "online",
       titleList: "Messages",
       historyOfChannel: "history",
+      isOpen: false,
       mainTitle: "Question Messanger",
       messageFilters: ["All Question", "My question", "Most discussed"],
       messageList: [
@@ -185,6 +197,19 @@ export default {
     saveInfo() {
       let parsed = JSON.stringify(this.messageList);
       localStorage.setItem("messageList", parsed);
+    },
+    open() {
+      this.isOpen = true;
+    },
+    close() {
+      this.isOpen = false;
+    },
+    toggle() {
+      if (this.isOpen) {
+        this.close();
+      } else {
+        this.open();
+      }
     }
   },
   computed: {

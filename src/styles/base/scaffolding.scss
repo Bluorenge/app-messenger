@@ -46,3 +46,49 @@ button {
 .btn:hover {
 	background-color: $blue-ligth-color;
 }
+
+.toggle__wrap {
+	width: 30px;
+	height: 30px;
+}
+
+.toggle__item {
+	display: block;
+	height: 4px;
+	width: 30px;
+	margin-bottom: 5px;
+	position: relative;
+	background-color: $center-graysecond-color;
+	border-radius: 3px;
+	transform-origin: 0% 0%;
+}
+
+.toggle__item:nth-child(3) {
+	margin-bottom: 0;
+}
+
+.toggle__wrap--cross .toggle__item {
+	margin: 0;
+	background-color: $sidebar-ligthgray-color;
+}
+
+.toggle__wrap--cross .toggle__item {
+	transform: rotate(45deg) translate(7px, -2px);
+}
+
+.toggle__wrap--cross .toggle__item:nth-child(2) {
+	transform: rotate(-45deg) translate(-12px, 17px);
+}
+
+$ease: (
+	out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1)
+);
+
+@function ease($key) {
+	@if map-has-key($ease, $key) {
+		@return map-get($ease, $key);
+	}
+
+	@warn "Unknown '#{$key}' in $ease.";
+	@return null;
+}
