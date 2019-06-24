@@ -54,10 +54,10 @@ const webpackConfig = require("./webpack.config.js"),
 		},
 		images: {
 			src: [
-				"./src/img/**/*.{jpg,jpeg,png,gif}"
+				"./src/img/**/*.{jpg,jpeg,png,gif,svg}"
 			],
 			dist: "./dist/img/",
-			watch: "./src/img/**/*.{jpg,jpeg,png,gif}"
+			watch: "./src/img/**/*.{jpg,jpeg,png,gif,svg}"
 		}
 	};
 
