@@ -1,0 +1,17 @@
+$sidebar-color: #05212a;
+$sidebar-ligthgray-color: #2a4249;
+$blue-color: #117fa3;
+$blue-ligth-color: #19bcf3;
+$center-lightgray-color: #f3f3f3;
+$center-graysecond-color: #cccccc;
+$center-icon-color: #dedede;
+$center-blue-color: #d9e8f2;
+$center-gray-color: #666666;
+
+$break-tablet: 768px;
+$break-desktop: 1024px;
+
+%responsive-img {
+	height: auto;
+  width: 100%;
+};

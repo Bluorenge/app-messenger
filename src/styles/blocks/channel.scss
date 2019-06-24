@@ -1,0 +1,41 @@
+.channel {
+	&__title {
+		font-size: 18px;
+		margin-bottom: 5px;
+	}
+
+	&__type {
+		display: block;
+		color: $sidebar-ligthgray-color;
+		margin-bottom: 20px;
+	}
+
+	&__item {
+		margin-bottom: 5px;
+		position: relative;
+	}
+
+	&__item::before {
+		position: absolute;
+		content: "";
+		background-image: url(../img/icon-case.svg);
+		height: 20px;
+		width: 20px;
+    top: 4px;
+    left: 5px;
+	}
+	
+	&__item a {
+		display: block;
+		width: 100%;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-left: 30px;
+	}
+
+	&__item--active {
+		color: #ffffff;
+		background-color: $blue-color;
+		border-radius: 5px;
+	}
+}
